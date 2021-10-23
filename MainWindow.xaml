@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Gocan_Radu_Florin_Lab2"
         mc:Ignorable="d"
-        Title="Virtual Doughnuts Factory" Height="450" Width="800" ResizeMode="NoResize" Background="{DynamicResource {x:Static SystemColors.ActiveCaptionBrushKey}}">
+        Title="Virtual Doughnuts Factory" Height="450" Width="800" ResizeMode="NoResize" Background="{DynamicResource {x:Static SystemColors.ActiveCaptionBrushKey}}" Loaded="frmMain_Loaded">
     <Grid>
         <Label x:Name="lblTitle" Content="Doughnuts - Bake &amp; Sale" HorizontalAlignment="Center" Margin="0,31,0,0" VerticalAlignment="Top" FontSize="24" FontWeight="Bold"/>
         <GroupBox x:Name="gbRaised" Header="Raised" FontWeight="Bold" Margin="170,116,422,217">
@@ -29,7 +29,7 @@
         <GroupBox x:Name="gbSale" Header="CurrentSale" Margin="170,240,138,10" FontWeight="Bold">
             <Canvas>
                 <Label x:Name="lblQuantity" Content="Quantity" Canvas.Left="40" Canvas.Top="21"/>
-                <TextBox x:Name="txtQuantity" Canvas.Left="104" Canvas.Top="25" Text="0" TextWrapping="Wrap" Width="28" Height="22"/>
+                <TextBox x:Name="txtQuantity" Canvas.Left="104" Canvas.Top="25" Text="0" TextWrapping="Wrap" Width="28" Height="22" KeyUp="txtQuantity_KeyPres"/>
                 <Label x:Name="lblType" Content="Type" Canvas.Left="145" Canvas.Top="23" RenderTransformOrigin="-0.305,0.591"/>
                 <ComboBox x:Name="cmbType" Canvas.Left="187" Canvas.Top="28" Width="84" Height="16"/>
                 <Label x:Name="lblPrice" Content="Price" Canvas.Left="285" Canvas.Top="22" RenderTransformOrigin="1.017,0.581"/>
@@ -43,20 +43,21 @@
             </Canvas>
         </GroupBox>
         <Menu x:Name="mnuMain" HorizontalAlignment="Left" Height="21" VerticalAlignment="Top" 
-Width="131" Margin="0,26,0,0">
+Width="230">
             <MenuItem Header="File">
-                <MenuItem Header="Exit"/>
+                <MenuItem x:Name="mnuExit" Header="Exit" Click="exitToolStripMenuItem_Click"/>
             </MenuItem>
             <MenuItem Header="_Doughnuts">
                 <MenuItem Header="Make">
                     <MenuItem Header="Raised">
-                        <MenuItem x:Name="glazedMenuItem" Header="Glazed"/>
-                        <MenuItem x:Name="sugarMenuItem" Header="Sugar"/>
+                        <MenuItem x:Name="glazedToolStripMenuItem" Header="Glazed" IsCheckable="True" Click="glazedToolStripMenuItem_Click"/>
+                        <MenuItem x:Name="sugarToolStripMenuItem" Header="Sugar"  
+IsCheckable="True" Click="sugarToolStripMenuItem_Click"/>
                     </MenuItem>
                     <MenuItem Header="Filled"/>
                 </MenuItem>
+                <MenuItem x:Name="mnuStop" Header="Stop" Click="stopToolStripMenuItem_Click"/>
             </MenuItem>
-
         </Menu>
 
     </Grid>
